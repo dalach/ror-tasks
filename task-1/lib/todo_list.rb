@@ -1,24 +1,48 @@
 class TodoList
-  #this is very important comment
+
   # Initialize the TodoList with +items+ (empty by default).
   def initialize(items=[])
-  	@items = items
+    if items == nil
+      raise IllegalArgument
+    else
+      @items = items
+      @tasks = {}
+      @items.each do |item|
+        @tasks[item] = false
+      end
+    end
+  end
+
+  def <<(other_object)
+    @items << other_object
+    @tasks[other_object] = false
+  end
+
+  def size
+    @items.size
   end
 
   def empty?
     @items.empty?
   end
 
-  def size
-    if @items.empty?
-       0 
-    else
-       @items.length
-    end
-  end
-  def <<(item_description) 
-    not @items.empty?
- 
+  def last
+    @items.last
   end
 
+  def first
+    @items.first
+  end
+
+  def complete(index)
+    @tasks[@items[index]] = true
+  end
+
+  def completed?(object)
+    true if @tasks[@items[object]] == true
+  end
+  
+  def uncomplete(index)
+    @tasks[@items[index]] = false
+  end
 end

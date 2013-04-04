@@ -18,6 +18,10 @@ class TodoList
     @tasks[other_object] = false
   end
 
+  def puts_completed(item)
+    if item.completed? then puts item end
+  end    
+
   def size
     @items.size
   end
@@ -45,4 +49,9 @@ class TodoList
   def uncomplete(index)
     @tasks[@items[index]] = false
   end
+
+  def completed_items
+    @tasks.each { |task| if  task.completed?(@tasks) then return task end}
+  end
+
 end

@@ -9,6 +9,13 @@ describe TodoList do
   let(:item_description)    { "Buy toilet paper" }
 
   it { should be_empty }
+  
+  it "return comp" do
+    list.complete(0)
+    list.completed_items.size.should == 1
+    list.completed_items.first.to_s.should == item_description
+  end
+  
 
   it "should raise an exception when nil is passed to the constructor" do
     expect { TodoList.new(nil) }.to raise_error(IllegalArgument)

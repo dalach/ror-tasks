@@ -139,5 +139,6 @@ class TodoList
   end
 
   def print_uncompleted(index)
-   
+    puts " - [ ] %s" % [@items[index]]
+  end
 end

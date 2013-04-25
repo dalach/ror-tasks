@@ -19,8 +19,8 @@ describe TodoList do
   
   it "return comp" do
     list.complete(0)
-    list.completed_items.size.should == 1
-    list.completed_items.first.to_s.should == item_description
+    list.return_completed.size.should == 1
+    list.return_completed.first.to_s.should == item_description
   end
   
   it "should raise an exception when nil is passed to the constructor" do
